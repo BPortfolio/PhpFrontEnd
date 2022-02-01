@@ -14,9 +14,12 @@ function custListHtml($custList): string
     $html = "<table class='center'>".PHP_EOL;
     foreach($custList as $cust){
 
-        $companyName = $cust["CompanyName"];
-        $stateName = $cust["State"];
-        /*
+        //$companyName = $cust["CompanyName"];
+        //$stateName = $cust["State"];
+
+        $companyName = "";
+        $stateName = "";
+
         foreach($cust as $col){
             if($col['ColName']=="Company Name"){
              $companyName = $col['ColVal'];
@@ -25,7 +28,7 @@ function custListHtml($custList): string
                 $stateName = $col['ColVal'];
             }
         }
-        */
+
         $html .= '<tr>'.PHP_EOL;
         $html .= "<td>".$companyName."</td>".PHP_EOL;
         $html .= "<td>".$stateName."</td>".PHP_EOL;
@@ -38,7 +41,8 @@ function custListHtml($custList): string
     return $html;
 }
 
-function custDetailHtml($detail){
+function custDetailHtml($detail): string
+{
     $html = "<table class='center'>".PHP_EOL;
     $html .= '<tr>'.PHP_EOL;
     $html .= "<td>Company Name</td>".PHP_EOL;

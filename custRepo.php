@@ -1,4 +1,5 @@
 <?php
+
 /*
 const Company = "Company Name";
 const contact = "Contact Person";
@@ -12,6 +13,7 @@ const zip = "Zip";
 
 $colHeader = array();
 $colData = array();
+$colRows = array();
 
 
 function colIndex($col, $i)
@@ -27,6 +29,7 @@ function colIndex($col, $i)
         case contact:
             $temp = array('ColName' => contact, 'Index' => $i);
             $colHeader[] = $temp;
+            break;
         case phone:
             $temp = array('ColName' => phone, 'Index' => $i);
             $colHeader[] = $temp;
@@ -60,7 +63,7 @@ function colIndex($col, $i)
     }
 }
 
-function getCol($col, $i)
+function getCol($col, $i): array
 {
     global $colHeader;
 
@@ -72,10 +75,14 @@ function getCol($col, $i)
             return array('ColName' => $item['ColName'], 'ColVal' => $col);
         }
     }
+
+    return array();
 }
 
-function getCustomers()
+function getCustomers(): array
 {
+    global $colData;
+    global $colRows;
 
 
     $rawData = array();
@@ -104,14 +111,16 @@ function getCustomers()
     foreach ($rawData as $row) {
         //Skipping column header
         if ($j != 0) {
+            $colRows = array();
             for ($i = 0; $i <= count($row) - 1; $i++) {
+
                 //Skipping empty columns
                 if (empty(trim($row[$i])) == false) {
-                    $colRows = getCol($row[$i], $i);
-                    $colData[] = $colRows;
+                    $arrCol = getCol($row[$i], $i);
+                    $colRows[] = $arrCol;
                 }
-
             }
+            $colData[] = $colRows;
 
         }
 
@@ -121,10 +130,13 @@ function getCustomers()
     return $colData;
 }
 
+
+//$customers = getCustomers();
+
 //echo "<pre>";
 //To display array data
 //var_dump($colData);
-//var_dump($colData);
+//var_dump($customers);
 //echo "</pre>";
 
 
