@@ -131,6 +131,25 @@ function getCustomers(): array
 }
 
 
+
+function getCustomer($customer): array
+{
+    $customers = getCustomers();
+
+    foreach($customers as $row){
+        foreach($row as $col){
+            if($col['ColName']='Company Name' && $col['ColVal'] == $customer){
+                //found the customer
+                return $row;
+            }
+
+        }
+    }
+
+    return array();
+}
+
+
 //$customers = getCustomers();
 
 //echo "<pre>";

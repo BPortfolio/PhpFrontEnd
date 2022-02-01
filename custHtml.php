@@ -20,19 +20,19 @@
 
         function initModal(){
             // Get the modal
-            var modal = document.getElementById("myModal");
+            let modal = document.getElementById("myModal");
 
             modal.style.display = "none";
 
             // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+            let span = document.getElementsByClassName("close")[0];
 
             // When the user clicks on <span> (x), close the modal
             span.onclick = function() {
                 modal.style.display = "none";
             }
 
-            // When the user clicks anywhere outside of the modal, close it
+            // When the user clicks anywhere beyond the modal, close it
             window.onclick = function(event) {
                 if (event.target === modal) {
                     modal.style.display = "none";
@@ -47,11 +47,11 @@
                 if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("modalContent").innerHTML = this.responseText;
                     // Get the modal
-                    var modal = document.getElementById("myModal");
+                    let modal = document.getElementById("myModal");
                     modal.style.display = "block";
                 }
             };
-            xhttp.open("GET", "custDetailModel.php?name="+name, true);
+            xhttp.open("GET", "custDetailModel.php?Name="+name, true);
             xhttp.send();
         }
 

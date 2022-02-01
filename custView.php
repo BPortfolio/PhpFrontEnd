@@ -41,39 +41,20 @@ function custListHtml($custList): string
     return $html;
 }
 
-function custDetailHtml($detail): string
+
+function custDetailHtml($customer): string
 {
     $html = "<table class='center'>".PHP_EOL;
-    $html .= '<tr>'.PHP_EOL;
-    $html .= "<td>Company Name</td>".PHP_EOL;
-    $html .= "<td>".$detail['Name']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= '<tr>'.PHP_EOL;
-    $html .= "<td>Contact</td>".PHP_EOL;
-    $html .= "<td>".$detail['Contact']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= '<tr>'.PHP_EOL;
-    $html .= "<td>Phone</td>".PHP_EOL;
-    $html .= "<td>".$detail['Phone']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= '<tr>'.PHP_EOL;
-    $html .= "<td>Street</td>".PHP_EOL;
-    $html .= "<td>".$detail['Street']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= "<td>City</td>".PHP_EOL;
-    $html .= "<td>".$detail['City']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= "<td>State</td>".PHP_EOL;
-    $html .= "<td>".$detail['State']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
-    $html .= "<td>Zip</td>".PHP_EOL;
-    $html .= "<td>".$detail['Zip']."</td>".PHP_EOL;
-    $html .= "</tr>".PHP_EOL;
 
+    foreach($customer as $col){
+        $html .= '<tr>'.PHP_EOL;
+        $html .= "<td>".$col['ColName'] ."</td>".PHP_EOL;
+        $html .= "<td>".$col['ColVal']."</td>".PHP_EOL;
+        $html .= "</tr>".PHP_EOL;
+    }
 
     $html .= "</table>".PHP_EOL;
 
     return $html;
 }
+
